@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import Carrot from '../game/Carrot.js';
 
-
 var platforms;
 var player;
 var cursors; 
@@ -32,6 +31,8 @@ export default class BunnyJumpScene extends Phaser.Scene{
             classType : Carrot
         })
 
+        
+
         this.physics.add.collider(this.platforms, this.carrots);
 
         for(let i = 0; i< 5; i++){
@@ -61,6 +62,7 @@ export default class BunnyJumpScene extends Phaser.Scene{
 
         this.physics.add.overlap(this.player, this.carrots, this.handleCollectCarrot, undefined, this);
 
+
         const style = {color : `red`, fontSize : 26};
         this.carrotsCollectedText = this.add.text(240,10, `Carrots : 0`, style)
             .setScrollFactor(0)
@@ -73,7 +75,7 @@ export default class BunnyJumpScene extends Phaser.Scene{
 
         const touchingDown = this.player.body.touching.down;
         if(touchingDown){
-            this.player.setVelocityY(-300);
+            this.player.setVelocityY(-320);
             this.player.setTexture(`bunny_jump`);
             this.sound.play(`jumpSound`);
         }
